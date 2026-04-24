@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLIP Image Search</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #111; padding: 2rem; max-width: 960px; margin: 0 auto; }
+
+    h1 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1.5rem; }
+
+    .tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; }
+    .tab { padding: 8px 18px; border: none; background: none; font-size: 14px; cursor: pointer; color: #888; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .tab.active { color: #111; border-bottom-color: #111; font-weight: 500; }
+    .tab:hover:not(.active) { color: #444; }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    input[type="text"] { flex: 1; padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; width: 100%; }
+    input[type="text"]:focus { border-color: #888; }
+    input[type="number"] { width: 64px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; text-align: center; outline: none; }
+    button { padding: 8px 18px; border: 1px solid #ccc; border-radius: 8px; background: white; font-size: 15px; cursor: pointer; }
+    button:hover { background: #f0f0f0; }
+    button:disabled { opacity: 0.5; cursor: default; }
+
+    .search-row { display: flex; gap: 8px; margin-bottom: 1rem; }
+
+    #status-search, #status-index { font-size: 13px; color: #888; margin-bottom: 1rem; min-height: 18px; }
+
+    #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .card { background: white; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; }
+    .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .card-meta { padding: 8px 10px; }
+    .card-name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-score { font-size: 12px; color: #888; margin-top: 2px; }
+    .empty { font-size: 14px; color: #888; padding: 2rem 0; text-align: center; }
+
+    .dropzone { border: 2px dashed #ccc; border-radius: 12px; padding: 2.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: white; margin-bottom: 1rem; }
+    .dropzone:hover, .dropzone.dragover { border-color: #888; background: #fafafa; }
+    .dropzone p { font-size: 14px; color: #888; margin-top: 6px; }
+    .dropzone strong { font-size: 15px; color: #444; }
+    input[type="file"] { display: none; }
+
+    #preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-bottom: 1rem; }
+    .preview-card { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e5; background: white; }
+    .preview-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .preview-card .remove { position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.5); color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+    .preview-card .remove:hover { background: rgba(0,0,0,0.75); }
+    .preview-name { font-size: 11px; color: #888; padding: 4px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .actions { display: flex; gap: 8px; align-items: center; margin-bottom: 1rem; }
+    .btn-primary { background: #111; color: white; border-color: #111; }
+    .btn-primary:hover:not(:disabled) { background: #333; border-color: #333; }
+    .btn-primary:disabled { background: #888; border-color: #888; color: white; }
+
+    .progress { height: 4px; background: #e5e5e5; border-radius: 4px; margin-bottom: 1rem; overflow: hidden; display: none; }
+    .progress-bar { height: 100%; background: #111; border-radius: 4px; transition: width 0.3s; width: 0%; }
+
+    .stats-bar { display: flex; gap: 12px; margin-bottom: 1.5rem; }
+    .stat { background: white; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px 16px; font-size: 13px; color: #888; }
+    .stat span { font-size: 18px; font-weight: 500; color: #111; display: block; }
+  </style>
+</head>
+<body>
+  <h1>CLIP Image Search</h1>
+
+  <div class="stats-bar">
+    <div class="stat">Indexierte Bilder <span id="doc-count">—</span></div>
+    <div class="stat">API Status <span id="api-status">—</span></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('search')">Suche</button>
+    <button class="tab" onclick="switchTab('index')">Indexieren</button>
+  </div>
+
+  <!-- SEARCH PANEL -->
+  <div class="panel active" id="panel-search">
+    <div class="search-row">
+      <input type="text" id="query" placeholder="z.B. Apfel, rotes Auto, Katze..." />
+      <input type="number" id="topk" value="6" min="1" max="20" title="Anzahl Ergebnisse" />
+      <button onclick="doSearch()">Suchen</button>
+    </div>
+    <div id="status-search"></div>
+    <div id="grid"></div>
+  </div>
+
+  <!-- INDEX PANEL -->
+  <div class="panel" id="panel-index">
+    <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
+      <strong>Bilder hierher ziehen oder klicken</strong>
+      <p>JPG, PNG, WEBP werden unterstützt</p>
+    </div>
+    <input type="file" id="file-input" multiple accept="image/*" onchange="addFiles(this.files)" />
+
+    <div id="preview-grid"></div>
+
+    <div class="actions">
+      <button class="btn-primary" id="btn-index" onclick="doIndex()" disabled>Indexieren</button>
+      <button onclick="clearFiles()" id="btn-clear" style="display:none">Auswahl leeren</button>
+      <span id="file-count" style="font-size:13px; color:#888;"></span>
+    </div>
+
+    <div class="progress" id="progress-bar-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <div id="status-index"></div>
+  </div>
+
+  <script>
+    const API = 'http://localhost:8000';
+    let selectedFiles = [];
+
+    async function fetchStats() {
+      try {
+        const res = await fetch(`${API}/stats`);
+        const data = await res.json();
+        document.getElementById('doc-count').textContent = data.indexed_images ?? data.indexed_documents ?? '—';
+        document.getElementById('api-status').textContent = '● Online';
+        document.getElementById('api-status').style.color = '#3a3';
+      } catch {
+        document.getElementById('api-status').textContent = '● Offline';
+        document.getElementById('api-status').style.color = '#c33';
+      }
+    }
+    fetchStats();
+    setInterval(fetchStats, 5000);
+
+    function switchTab(name) {
+      document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', ['search','index'][i] === name));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(`panel-${name}`).classList.add('active');
+    }
+
+    document.getElementById('query').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
+    async function doSearch() {
+      const query = document.getElementById('query').value.trim();
+      const topk = parseInt(document.getElementById('topk').value) || 6;
+      if (!query) return;
+
+      const status = document.getElementById('status-search');
+      const grid = document.getElementById('grid');
+      status.textContent = 'Suche läuft...';
+      grid.innerHTML = '';
+
+      try {
+        const res = await fetch(`${API}/search`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query, top_k: topk })
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          status.textContent = `Fehler: ${err.detail || res.statusText}`;
+          return;
+        }
+
+        const docs = await res.json();
+        status.textContent = `${docs.length} Ergebnis${docs.length !== 1 ? 'se' : ''} für „${query}"`;
+
+        if (docs.length === 0) {
+          grid.innerHTML = '<div class="empty">Keine Bilder gefunden.</div>';
+          return;
+        }
+
+        grid.innerHTML = docs.map(doc => `
+          <div class="card">
+            <img src="data:image/jpeg;base64,${doc.image_base64}" alt="${doc.filename}" />
+            <div class="card-meta">
+              <div class="card-name">${doc.filename}</div>
+              <div class="card-score">Score: ${(doc.score * 100).toFixed(1)}%</div>
+            </div>
+          </div>
+        `).join('');
+
+      } catch (e) {
+        status.textContent = `Verbindungsfehler: ${e.message}`;
+      }
+    }
+
+    const dropzone = document.getElementById('dropzone');
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      addFiles(e.dataTransfer.files);
+    });
+
+    function addFiles(files) {
+      for (const file of files) {
+        if (!file.type.startsWith('image/')) continue;
+        if (selectedFiles.find(f => f.name === file.name)) continue;
+        selectedFiles.push(file);
+      }
+      renderPreviews();
+    }
+
+    function renderPreviews() {
+      const grid = document.getElementById('preview-grid');
+      grid.innerHTML = selectedFiles.map((file, i) => `
+        <div class="preview-card">
+          <img src="${URL.createObjectURL(file)}" alt="${file.name}" />
+          <button class="remove" onclick="removeFile(${i})">✕</button>
+          <div class="preview-name">${file.name}</div>
+        </div>
+      `).join('');
+
+      const count = selectedFiles.length;
+      document.getElementById('file-count').textContent = count > 0 ? `${count} Bild${count !== 1 ? 'er' : ''} ausgewählt` : '';
+      document.getElementById('btn-index').disabled = count === 0;
+      document.getElementById('btn-clear').style.display = count > 0 ? 'inline-block' : 'none';
+    }
+
+    function removeFile(i) {
+      selectedFiles.splice(i, 1);
+      renderPreviews();
+    }
+
+    function clearFiles() {
+      selectedFiles = [];
+      renderPreviews();
+      document.getElementById('status-index').textContent = '';
+    }
+
+    async function doIndex() {
+      if (selectedFiles.length === 0) return;
+
+      const btn = document.getElementById('btn-index');
+      const status = document.getElementById('status-index');
+      const progressWrap = document.getElementById('progress-bar-wrap');
+      const progressBar = document.getElementById('progress-bar');
+
+      btn.disabled = true;
+      progressWrap.style.display = 'block';
+      progressBar.style.width = '10%';
+      status.textContent = `${selectedFiles.length} Bilder werden hochgeladen...`;
+
+      const formData = new FormData();
+      for (const file of selectedFiles) formData.append('files', file);
+
+      progressBar.style.width = '40%';
+
+      try {
+        const res = await fetch(`${API}/index`, { method: 'POST', body: formData });
+        progressBar.style.width = '80%';
+
+        if (!res.ok) {
+          const err = await res.json();
+          status.textContent = `Fehler: ${err.detail || res.statusText}`;
+          return;
+        }
+
+        progressBar.style.width = '100%';
+        status.textContent = `✓ ${selectedFiles.length} Bilder erfolgreich indexiert.`;
+        clearFiles();
+        setTimeout(() => { progressWrap.style.display = 'none'; progressBar.style.width = '0%'; }, 1000);
+        fetchStats();
+
+      } catch (e) {
+        status.textContent = `Verbindungsfehler: ${e.message}`;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>

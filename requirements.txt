@@ -1,0 +1,8 @@
+haystack-ai
+qdrant-haystack
+fastapi
+uvicorn
+python-multipart
+pillow
+tf-keras
+sentence-transformers
