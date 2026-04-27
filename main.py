@@ -16,6 +16,8 @@ from pipelines import build_document_store, build_indexing_pipeline, build_searc
 from dotenv import load_dotenv
 load_dotenv()
 
+from logger import logger
+
 IMAGE_DIR = Path("images")
 IMAGE_DIR.mkdir(exist_ok=True)
 
@@ -65,6 +67,7 @@ def root():
 @app.post("/index", status_code=202)
 async def index_images(request: Request, files: List[UploadFile] = File(...)):
     """Save uploaded images to disk and index them via CLIP."""
+    logger.info(f"Indexierung gestartet – {len(files)} Bilder")
     saved_paths = []
     for file in files:
         dest = IMAGE_DIR / file.filename
@@ -75,18 +78,25 @@ async def index_images(request: Request, files: List[UploadFile] = File(...)):
     await request.app.state.indexing_pipeline.run_async(
         {"image_converter": {"sources": saved_paths}}
     )
+    logger.info(f"Indexierung abgeschlossen – {len(saved_paths)} Bilder erfolgreich indexiert")
     return {"message": f"{len(saved_paths)} images indexed.", "files": saved_paths}
 
 
 @app.post("/search", response_model=List[SearchResult])
 async def search(request: Request, body: SearchRequest):
+    logger.info(f"Suchanfrage: '{body.query}' | top_k={body.top_k}")
     result = await request.app.state.search_pipeline.run_async(
         {"text_embedder": {"text": body.query}}
     )
 
     docs = result["retriever"]["documents"][: body.top_k]
+    for doc in docs:
+        logger.debug(f"  Score: {doc.score:.4f} | Pfad: {doc.meta.get('file_path')}")
+
+    logger.debug(f"Gefundene Dokumente: {len(docs)}")
 
     if not docs:
+        
         raise HTTPException(status_code=404, detail="No matching images found.")
 
     results = []
@@ -94,6 +104,7 @@ async def search(request: Request, body: SearchRequest):
         filename = Path(str(doc.meta["file_path"])).name  # nur "apple.jpg"
         file_path = IMAGE_DIR / filename                   # "images/apple.jpg"
         if not file_path.exists():
+            logger.warning(f"Datei nicht gefunden: {file_path}")
             print(f"Nicht gefunden: {file_path}")
             continue
         image_b64 = base64.b64encode(file_path.read_bytes()).decode("utf-8")
@@ -104,8 +115,10 @@ async def search(request: Request, body: SearchRequest):
         ))
 
     if not results:
+        logger.warning(f"Keine Ergebnisse für Query: '{body.query}'")
         raise HTTPException(status_code=404, detail="Dateien nicht lokal vorhanden.")
-
+    
+    logger.info(f"Suche erfolgreich – {len(results)} Ergebnisse zurückgegeben")
     return results
 
 

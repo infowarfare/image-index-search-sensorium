@@ -1,0 +1,22 @@
+2026-04-27 15:01:21 | INFO     | haystack_index_search | Suchanfrage: 'ein hund' | top_k=3
+2026-04-27 15:01:22 | DEBUG    | haystack_index_search |   Score: 0.2634 | Pfad: /content/drive/MyDrive/clip_images/dog.jpg
+2026-04-27 15:01:22 | DEBUG    | haystack_index_search |   Score: 0.2330 | Pfad: /content/drive/MyDrive/clip_images/capybara.jpg
+2026-04-27 15:01:22 | DEBUG    | haystack_index_search |   Score: 0.2151 | Pfad: /content/drive/MyDrive/clip_images/cat.jpg
+2026-04-27 15:01:22 | DEBUG    | haystack_index_search | Gefundene Dokumente: 3
+2026-04-27 15:01:22 | INFO     | haystack_index_search | Suche erfolgreich – 3 Ergebnisse zurückgegeben
+2026-04-27 15:02:31 | INFO     | haystack_index_search | Suchanfrage: 'eine blume auf einem display' | top_k=1
+2026-04-27 15:02:31 | DEBUG    | haystack_index_search |   Score: 0.2550 | Pfad: /content/drive/MyDrive/clip_images/csm_211027_DMB_Räume_-34_828844a54c.jpg
+2026-04-27 15:02:31 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-27 15:02:31 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-27 15:03:07 | INFO     | haystack_index_search | Suchanfrage: 'die zahl 6' | top_k=1
+2026-04-27 15:03:08 | DEBUG    | haystack_index_search |   Score: 0.2301 | Pfad: /content/drive/MyDrive/clip_images/car.jpg
+2026-04-27 15:03:08 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-27 15:03:08 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-27 15:03:19 | INFO     | haystack_index_search | Suchanfrage: 'die zahl 6 auf einem display' | top_k=1
+2026-04-27 15:03:19 | DEBUG    | haystack_index_search |   Score: 0.2586 | Pfad: /content/drive/MyDrive/clip_images/csm_KI_Fundamente_Kritzelkommando_DMB260123_77_812e3b98cd.jpg
+2026-04-27 15:03:19 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-27 15:03:19 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-27 16:41:06 | INFO     | haystack_index_search | Suchanfrage: 'rotes auto' | top_k=1
+2026-04-27 16:41:06 | DEBUG    | haystack_index_search |   Score: 0.2521 | Pfad: /content/drive/MyDrive/clip_images/car.jpg
+2026-04-27 16:41:06 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-27 16:41:06 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
