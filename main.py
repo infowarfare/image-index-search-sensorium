@@ -5,6 +5,9 @@ from pathlib import Path
 from typing import List
 
 from fastapi import FastAPI, HTTPException, UploadFile, File, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -32,6 +35,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="CLIP Image Search API", lifespan=lifespan)
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -52,6 +57,11 @@ class SearchResult(BaseModel):
 
 
 # --- Endpoints ---
+@app.get("/")
+def root():
+    return FileResponse("static/search_index.html")
+
+
 @app.post("/index", status_code=202)
 async def index_images(request: Request, files: List[UploadFile] = File(...)):
     """Save uploaded images to disk and index them via CLIP."""
