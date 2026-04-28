@@ -18,7 +18,7 @@ def search_images(query: str, top_k: int = 3) -> list[dict]:
 
     content = []
     for doc in docs:
-        print(f"base64 length: {len(doc['image_base64'])}")
+        
         meta_parts = [f"Dateiname: {doc['filename']} | Score: {round(doc['score'], 4)}"]
         if doc.get("description"):
             meta_parts.append(f"Beschreibung: {doc['description']}")
@@ -27,7 +27,7 @@ def search_images(query: str, top_k: int = 3) -> list[dict]:
         content.append(TextContent(text=" | ".join(meta_parts)))
 
         resized_b64 = resize_image(doc["image_base64"])
-        print(f"resized base64 length: {len(resized_b64)}")
+        
         content.append(ImageContent(
             base64_image=resized_b64,
             mime_type="image/jpeg"
