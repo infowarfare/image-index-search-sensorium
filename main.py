@@ -14,7 +14,7 @@ from pipelines import build_document_store, build_indexing_pipeline, build_searc
 from dotenv import load_dotenv
 load_dotenv()
 
-from logger import logger
+from utils.logger import logger
 
 IMAGE_DIR = Path("images")
 IMAGE_DIR.mkdir(exist_ok=True)
