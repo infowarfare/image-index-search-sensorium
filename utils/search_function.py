@@ -1,8 +1,5 @@
 import httpx
-from haystack.tools import Tool
-from haystack.dataclasses import ChatMessage, ImageContent, TextContent
-from haystack.components.agents import Agent
-from haystack.components.generators.chat import OpenAIChatGenerator
+from haystack.dataclasses import ImageContent, TextContent
 from resize_image import resize_image
 
 def search_images(query: str, top_k: int = 3) -> list[dict]:
