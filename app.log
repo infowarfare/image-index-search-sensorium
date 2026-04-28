@@ -45,3 +45,18 @@
 2026-04-28 10:48:09 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
 2026-04-28 10:48:09 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
 2026-04-28 10:57:56 | INFO     | haystack_index_search | Indexierung gestartet – 2 Bilder
+2026-04-28 11:05:26 | INFO     | haystack_index_search | Indexierung gestartet – 2 Bilder
+2026-04-28 11:05:27 | INFO     | haystack_index_search | Indexierung abgeschlossen – 2 Bilder erfolgreich indexiert
+2026-04-28 11:05:39 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=6
+2026-04-28 11:05:40 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:05:40 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:05:40 | DEBUG    | haystack_index_search |   Score: 0.2324 | Pfad: /content/drive/MyDrive/clip_images/csm_251113_DMB_KI_fuer_den_Mittelstand_018_a8f24587f7.jpg
+2026-04-28 11:05:40 | DEBUG    | haystack_index_search |   Score: 0.2145 | Pfad: /content/drive/MyDrive/clip_images/csm_KI_Fundamente_ExplainableAI_DMB250221_2044_0d1ee718c3.jpg
+2026-04-28 11:05:40 | DEBUG    | haystack_index_search |   Score: 0.2131 | Pfad: /content/drive/MyDrive/clip_images/csm_KI_Fundamente_Kritzelkommando_DMB260123_77_812e3b98cd.jpg
+2026-04-28 11:05:40 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:05:40 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:06:18 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=2
+2026-04-28 11:06:18 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:06:18 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:06:18 | DEBUG    | haystack_index_search | Gefundene Dokumente: 2
+2026-04-28 11:06:18 | INFO     | haystack_index_search | Suche erfolgreich – 2 Ergebnisse zurückgegeben
