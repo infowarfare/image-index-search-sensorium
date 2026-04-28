@@ -41,7 +41,7 @@ HF_HUB_DISABLE_SYMLINKS_WARNING=1
 
 ## Frontend
 
-Open `index.html` in a browser to access the search and indexing UI.
+Open `search_index.html` in a browser to access the search and indexing UI.
 
 ## Models
 
