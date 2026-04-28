@@ -163,3 +163,43 @@
 2026-04-28 11:40:22 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
 2026-04-28 11:40:22 | DEBUG    | haystack_index_search | Gefundene Dokumente: 2
 2026-04-28 11:40:22 | INFO     | haystack_index_search | Suche erfolgreich – 2 Ergebnisse zurückgegeben
+2026-04-28 11:46:54 | INFO     | haystack_index_search | Suchanfrage: 'grauer Roboter' | top_k=1
+2026-04-28 11:46:54 | DEBUG    | haystack_index_search |   Score: 0.2584 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:46:54 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:46:54 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:50:25 | INFO     | haystack_index_search | Suchanfrage: 'grauer roboter' | top_k=1
+2026-04-28 11:50:25 | DEBUG    | haystack_index_search |   Score: 0.2497 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:50:25 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:50:25 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:51:27 | INFO     | haystack_index_search | Suchanfrage: 'grauer Roboter' | top_k=1
+2026-04-28 11:51:27 | DEBUG    | haystack_index_search |   Score: 0.2584 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:51:27 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:51:27 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:53:16 | INFO     | haystack_index_search | Suchanfrage: 'grauer Roboter' | top_k=1
+2026-04-28 11:53:16 | DEBUG    | haystack_index_search |   Score: 0.2584 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:53:16 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:53:16 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:55:18 | INFO     | haystack_index_search | Suchanfrage: 'grauer Roboter' | top_k=1
+2026-04-28 11:55:18 | DEBUG    | haystack_index_search |   Score: 0.2584 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:55:18 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:55:18 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 12:00:23 | INFO     | haystack_index_search | Suchanfrage: 'grauer roboter' | top_k=1
+2026-04-28 12:00:23 | DEBUG    | haystack_index_search |   Score: 0.2497 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 12:00:23 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 12:00:23 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 12:03:00 | INFO     | haystack_index_search | Suchanfrage: 'grauer roboter' | top_k=1
+2026-04-28 12:03:00 | DEBUG    | haystack_index_search |   Score: 0.2497 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 12:03:00 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 12:03:00 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 12:04:14 | INFO     | haystack_index_search | Suchanfrage: 'grauer roboter' | top_k=1
+2026-04-28 12:04:14 | DEBUG    | haystack_index_search |   Score: 0.2497 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 12:04:14 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 12:04:14 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 12:05:27 | INFO     | haystack_index_search | Suchanfrage: 'grauer roboter' | top_k=1
+2026-04-28 12:05:27 | DEBUG    | haystack_index_search |   Score: 0.2497 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 12:05:27 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 12:05:27 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 12:06:09 | INFO     | haystack_index_search | Suchanfrage: 'grauer Roboter' | top_k=1
+2026-04-28 12:06:09 | DEBUG    | haystack_index_search |   Score: 0.2584 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 12:06:09 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 12:06:09 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
