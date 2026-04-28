@@ -114,3 +114,52 @@
 2026-04-28 11:30:40 | DEBUG    | haystack_index_search |   Score: 0.2089 | Pfad: /content/drive/MyDrive/clip_images/cat.jpg
 2026-04-28 11:30:40 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
 2026-04-28 11:30:40 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:39:05 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=2
+2026-04-28 11:39:05 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:39:05 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:39:05 | DEBUG    | haystack_index_search | Gefundene Dokumente: 2
+2026-04-28 11:39:05 | INFO     | haystack_index_search | Suche erfolgreich – 2 Ergebnisse zurückgegeben
+2026-04-28 11:39:10 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=4
+2026-04-28 11:39:10 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:39:10 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:39:10 | DEBUG    | haystack_index_search |   Score: 0.2381 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\linearbeschleuniger.jpg
+2026-04-28 11:39:10 | DEBUG    | haystack_index_search |   Score: 0.2379 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\kreisbeschleuninger_teilchenbeschleuniger.jpg
+2026-04-28 11:39:10 | DEBUG    | haystack_index_search | Gefundene Dokumente: 4
+2026-04-28 11:39:10 | INFO     | haystack_index_search | Suche erfolgreich – 4 Ergebnisse zurückgegeben
+2026-04-28 11:39:14 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=5
+2026-04-28 11:39:14 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:39:14 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:39:14 | DEBUG    | haystack_index_search |   Score: 0.2381 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\linearbeschleuniger.jpg
+2026-04-28 11:39:14 | DEBUG    | haystack_index_search |   Score: 0.2379 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\kreisbeschleuninger_teilchenbeschleuniger.jpg
+2026-04-28 11:39:14 | DEBUG    | haystack_index_search |   Score: 0.2094 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\teilchenbeschleuniger.jpg
+2026-04-28 11:39:14 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:39:14 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:39:29 | INFO     | haystack_index_search | Suchanfrage: 'Teilchenbeschleuniger' | top_k=1
+2026-04-28 11:39:29 | DEBUG    | haystack_index_search |   Score: 0.2395 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\kreisbeschleuninger_teilchenbeschleuniger.jpg
+2026-04-28 11:39:29 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:39:29 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:39:36 | INFO     | haystack_index_search | Suchanfrage: 'Nobelpreise' | top_k=1
+2026-04-28 11:39:36 | DEBUG    | haystack_index_search |   Score: 0.2132 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\kreisbeschleuninger_teilchenbeschleuniger.jpg
+2026-04-28 11:39:36 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:39:36 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:39:45 | INFO     | haystack_index_search | Suchanfrage: 'RHINO' | top_k=1
+2026-04-28 11:39:45 | DEBUG    | haystack_index_search |   Score: 0.2184 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\linearbeschleuniger.jpg
+2026-04-28 11:39:45 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:39:45 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:39:55 | INFO     | haystack_index_search | Suchanfrage: 'Roboter mit blauen AUgen' | top_k=1
+2026-04-28 11:39:56 | DEBUG    | haystack_index_search |   Score: 0.2626 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:39:56 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:39:56 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:40:06 | INFO     | haystack_index_search | Suchanfrage: 'LLM' | top_k=1
+2026-04-28 11:40:06 | DEBUG    | haystack_index_search |   Score: 0.2194 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\linearbeschleuniger.jpg
+2026-04-28 11:40:06 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:40:06 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:40:13 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=1
+2026-04-28 11:40:13 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:40:13 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
+2026-04-28 11:40:13 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 11:40:22 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=2
+2026-04-28 11:40:22 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:40:22 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:40:22 | DEBUG    | haystack_index_search | Gefundene Dokumente: 2
+2026-04-28 11:40:22 | INFO     | haystack_index_search | Suche erfolgreich – 2 Ergebnisse zurückgegeben
