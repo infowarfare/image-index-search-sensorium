@@ -60,3 +60,57 @@
 2026-04-28 11:06:18 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
 2026-04-28 11:06:18 | DEBUG    | haystack_index_search | Gefundene Dokumente: 2
 2026-04-28 11:06:18 | INFO     | haystack_index_search | Suche erfolgreich – 2 Ergebnisse zurückgegeben
+2026-04-28 11:19:42 | INFO     | haystack_index_search | Indexierung gestartet – 1 Bilder
+2026-04-28 11:19:42 | INFO     | haystack_index_search | Indexierung abgeschlossen – 1 Bilder erfolgreich indexiert
+2026-04-28 11:19:58 | INFO     | haystack_index_search | Suchanfrage: 'teilchenphysik' | top_k=6
+2026-04-28 11:19:58 | DEBUG    | haystack_index_search |   Score: 0.2339 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\teilchenbeschleuniger.jpg
+2026-04-28 11:19:58 | DEBUG    | haystack_index_search |   Score: 0.2334 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:19:58 | DEBUG    | haystack_index_search |   Score: 0.2223 | Pfad: /content/drive/MyDrive/clip_images/csm_251113_DMB_KI_fuer_den_Mittelstand_018_a8f24587f7.jpg
+2026-04-28 11:19:58 | DEBUG    | haystack_index_search |   Score: 0.2194 | Pfad: /content/drive/MyDrive/clip_images/apple.jpg
+2026-04-28 11:19:58 | DEBUG    | haystack_index_search |   Score: 0.2184 | Pfad: /content/drive/MyDrive/clip_images/csm_KI_Fundamente_Kritzelkommando_DMB260123_77_812e3b98cd.jpg
+2026-04-28 11:19:58 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:19:58 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:20:13 | INFO     | haystack_index_search | Suchanfrage: 'roboter' | top_k=6
+2026-04-28 11:20:13 | DEBUG    | haystack_index_search |   Score: 0.2516 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\ameca_roboter.jpg
+2026-04-28 11:20:13 | DEBUG    | haystack_index_search |   Score: 0.2490 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:20:13 | DEBUG    | haystack_index_search |   Score: 0.2324 | Pfad: /content/drive/MyDrive/clip_images/csm_251113_DMB_KI_fuer_den_Mittelstand_018_a8f24587f7.jpg
+2026-04-28 11:20:13 | DEBUG    | haystack_index_search |   Score: 0.2145 | Pfad: /content/drive/MyDrive/clip_images/csm_KI_Fundamente_ExplainableAI_DMB250221_2044_0d1ee718c3.jpg
+2026-04-28 11:20:13 | DEBUG    | haystack_index_search |   Score: 0.2131 | Pfad: /content/drive/MyDrive/clip_images/csm_KI_Fundamente_Kritzelkommando_DMB260123_77_812e3b98cd.jpg
+2026-04-28 11:20:13 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:20:13 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:24:36 | INFO     | haystack_index_search | Indexierung gestartet – 1 Bilder
+2026-04-28 11:24:36 | INFO     | haystack_index_search | Indexierung abgeschlossen – 1 Bilder erfolgreich indexiert
+2026-04-28 11:24:43 | INFO     | haystack_index_search | Suchanfrage: 'nobelpreis' | top_k=6
+2026-04-28 11:24:43 | DEBUG    | haystack_index_search |   Score: 0.2231 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\kreisbeschleuninger_teilchenbeschleuniger.jpg
+2026-04-28 11:24:43 | DEBUG    | haystack_index_search |   Score: 0.2214 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\teilchenbeschleuniger.jpg
+2026-04-28 11:24:43 | DEBUG    | haystack_index_search |   Score: 0.2190 | Pfad: /content/drive/MyDrive/clip_images/csm_KI_Fundamente_Kritzelkommando_DMB260123_77_812e3b98cd.jpg
+2026-04-28 11:24:43 | DEBUG    | haystack_index_search |   Score: 0.2175 | Pfad: /content/drive/MyDrive/clip_images/museum.jpg
+2026-04-28 11:24:43 | DEBUG    | haystack_index_search |   Score: 0.2174 | Pfad: /content/drive/MyDrive/clip_images/capybara.jpg
+2026-04-28 11:24:43 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:24:43 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:25:13 | INFO     | haystack_index_search | Suchanfrage: 'Wolfgang Paul' | top_k=6
+2026-04-28 11:25:13 | DEBUG    | haystack_index_search |   Score: 0.2360 | Pfad: /content/drive/MyDrive/clip_images/capybara.jpg
+2026-04-28 11:25:13 | DEBUG    | haystack_index_search |   Score: 0.2307 | Pfad: /content/drive/MyDrive/clip_images/car.jpg
+2026-04-28 11:25:13 | DEBUG    | haystack_index_search |   Score: 0.2081 | Pfad: /content/drive/MyDrive/clip_images/dog.jpg
+2026-04-28 11:25:13 | DEBUG    | haystack_index_search |   Score: 0.2077 | Pfad: /content/drive/MyDrive/clip_images/cat.jpg
+2026-04-28 11:25:13 | DEBUG    | haystack_index_search |   Score: 0.2058 | Pfad: C:\Users\lucas\Desktop\haystack-fastapi\images\turtle.jpg
+2026-04-28 11:25:13 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:25:13 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:25:24 | INFO     | haystack_index_search | Suchanfrage: 'Teilchenphysik' | top_k=6
+2026-04-28 11:25:24 | DEBUG    | haystack_index_search |   Score: 0.2388 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\kreisbeschleuninger_teilchenbeschleuniger.jpg
+2026-04-28 11:25:24 | DEBUG    | haystack_index_search |   Score: 0.2277 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\rhino_roboter.jpg
+2026-04-28 11:25:24 | DEBUG    | haystack_index_search |   Score: 0.2239 | Pfad: /content/drive/MyDrive/clip_images/csm_251113_DMB_KI_fuer_den_Mittelstand_018_a8f24587f7.jpg
+2026-04-28 11:25:24 | DEBUG    | haystack_index_search |   Score: 0.2165 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\teilchenbeschleuniger.jpg
+2026-04-28 11:25:24 | DEBUG    | haystack_index_search |   Score: 0.2163 | Pfad: /content/drive/MyDrive/clip_images/dog.jpg
+2026-04-28 11:25:24 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:25:24 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 11:30:33 | INFO     | haystack_index_search | Indexierung gestartet – 1 Bilder
+2026-04-28 11:30:33 | INFO     | haystack_index_search | Indexierung abgeschlossen – 1 Bilder erfolgreich indexiert
+2026-04-28 11:30:40 | INFO     | haystack_index_search | Suchanfrage: 'Linear' | top_k=6
+2026-04-28 11:30:40 | DEBUG    | haystack_index_search |   Score: 0.2277 | Pfad: /content/drive/MyDrive/clip_images/car.jpg
+2026-04-28 11:30:40 | DEBUG    | haystack_index_search |   Score: 0.2203 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\linearbeschleuniger.jpg
+2026-04-28 11:30:40 | DEBUG    | haystack_index_search |   Score: 0.2126 | Pfad: C:\Users\lucas\Desktop\image-index-search-sensorium\images\kreisbeschleuninger_teilchenbeschleuniger.jpg
+2026-04-28 11:30:40 | DEBUG    | haystack_index_search |   Score: 0.2096 | Pfad: /content/drive/MyDrive/clip_images/apple.jpg
+2026-04-28 11:30:40 | DEBUG    | haystack_index_search |   Score: 0.2089 | Pfad: /content/drive/MyDrive/clip_images/cat.jpg
+2026-04-28 11:30:40 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 11:30:40 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
