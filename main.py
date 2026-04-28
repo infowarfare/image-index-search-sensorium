@@ -95,7 +95,8 @@ async def index_images(
     for file in files:
         dest = IMAGE_DIR / file.filename
         dest.write_bytes(await file.read())
-        saved_paths.append(str(dest.resolve()))
+        saved_paths.append(str(dest))
+        #saved_paths.append(str(dest.resolve()))
 
     # Step 1: convert images to Documents
     converter_result = request.app.state.indexing_pipeline.get_component(
