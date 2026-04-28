@@ -6,3 +6,4 @@ python-multipart
 pillow
 tf-keras
 sentence-transformers
+python-dotenv
