@@ -2,7 +2,7 @@ import logging
 import sys
 from pathlib import Path
 
-def setup_logger(name: str = "haystack_index_search", log_file: str = "app.log") -> logging.Logger:
+def setup_logger(name: str = "haystack_index_search", log_file: str = "logs/app.log") -> logging.Logger:
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
 
