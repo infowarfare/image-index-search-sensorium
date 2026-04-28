@@ -4,7 +4,9 @@ Semantic image search using CLIP embeddings, Haystack, Qdrant and FastAPI.
 
 ## How it works
 
-Images are indexed using a CLIP image encoder and stored in Qdrant as vectors. A text query is encoded using a matching CLIP text encoder and compared against the stored image vectors to find the most similar images.
+Images are indexed using a CLIP image encoder and stored in Qdrant as vectors. A text query is encoded using a matching CLIP text encoder and compared against the stored image vectors to find the most similar images. Search results not only return the image itself, but metadata such as the image description and keywords. Used as an external image service for the Sensorium+ museum chatbot.
+
+Addtionally, a single page website offers the possibility bulk index images with additional metadata. The indexed images can be retrieved via the search function provided that also serves as the search endpoint for the chatbot.
 
 ## Setup
 
