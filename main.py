@@ -231,7 +231,7 @@ async def index_images(
         saved_paths.append(str(dest.resolve()))
 
     # Step 1: convert images to Documents
-    converter_result = await request.app.state.indexing_pipeline.get_component(
+    converter_result = request.app.state.indexing_pipeline.get_component(
         "image_converter"
     ).run(sources=saved_paths)
     documents = converter_result["documents"]
@@ -255,12 +255,12 @@ async def index_images(
             ) or doc.content
 
     # Step 3: embed + write
-    embed_result = await request.app.state.indexing_pipeline.get_component(
+    embed_result = request.app.state.indexing_pipeline.get_component(
         "image_doc_embedder"
     ).run(documents=documents)
     embedded_docs = embed_result["documents"]
 
-    await request.app.state.indexing_pipeline.get_component(
+    request.app.state.indexing_pipeline.get_component(
         "document_writer"
     ).run(documents=embedded_docs)
 

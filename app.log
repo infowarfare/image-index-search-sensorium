@@ -20,3 +20,28 @@
 2026-04-27 16:41:06 | DEBUG    | haystack_index_search |   Score: 0.2521 | Pfad: /content/drive/MyDrive/clip_images/car.jpg
 2026-04-27 16:41:06 | DEBUG    | haystack_index_search | Gefundene Dokumente: 1
 2026-04-27 16:41:06 | INFO     | haystack_index_search | Suche erfolgreich – 1 Ergebnisse zurückgegeben
+2026-04-28 10:47:33 | INFO     | haystack_index_search | Suchanfrage: 'apfel' | top_k=6
+2026-04-28 10:47:34 | DEBUG    | haystack_index_search |   Score: 0.2344 | Pfad: /content/drive/MyDrive/clip_images/capybara.jpg
+2026-04-28 10:47:34 | DEBUG    | haystack_index_search |   Score: 0.2329 | Pfad: /content/drive/MyDrive/clip_images/car.jpg
+2026-04-28 10:47:34 | DEBUG    | haystack_index_search |   Score: 0.2252 | Pfad: /content/drive/MyDrive/clip_images/dog.jpg
+2026-04-28 10:47:34 | DEBUG    | haystack_index_search |   Score: 0.2230 | Pfad: /content/drive/MyDrive/clip_images/cat.jpg
+2026-04-28 10:47:34 | DEBUG    | haystack_index_search |   Score: 0.2201 | Pfad: /content/drive/MyDrive/clip_images/apple.jpg
+2026-04-28 10:47:34 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 10:47:34 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 10:47:47 | INFO     | haystack_index_search | Suchanfrage: 'roter apfel' | top_k=6
+2026-04-28 10:47:47 | DEBUG    | haystack_index_search |   Score: 0.2255 | Pfad: /content/drive/MyDrive/clip_images/apple.jpg
+2026-04-28 10:47:47 | DEBUG    | haystack_index_search |   Score: 0.2213 | Pfad: /content/drive/MyDrive/clip_images/dog.jpg
+2026-04-28 10:47:47 | DEBUG    | haystack_index_search |   Score: 0.2206 | Pfad: /content/drive/MyDrive/clip_images/capybara.jpg
+2026-04-28 10:47:47 | DEBUG    | haystack_index_search |   Score: 0.2196 | Pfad: /content/drive/MyDrive/clip_images/car.jpg
+2026-04-28 10:47:47 | DEBUG    | haystack_index_search |   Score: 0.2156 | Pfad: /content/drive/MyDrive/clip_images/cat.jpg
+2026-04-28 10:47:47 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 10:47:47 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 10:48:09 | INFO     | haystack_index_search | Suchanfrage: 'ein tier das auf gras liegt' | top_k=6
+2026-04-28 10:48:09 | DEBUG    | haystack_index_search |   Score: 0.2580 | Pfad: /content/drive/MyDrive/clip_images/capybara.jpg
+2026-04-28 10:48:09 | DEBUG    | haystack_index_search |   Score: 0.2547 | Pfad: /content/drive/MyDrive/clip_images/dog.jpg
+2026-04-28 10:48:09 | DEBUG    | haystack_index_search |   Score: 0.2338 | Pfad: /content/drive/MyDrive/clip_images/cat.jpg
+2026-04-28 10:48:09 | DEBUG    | haystack_index_search |   Score: 0.2251 | Pfad: C:\Users\lucas\Desktop\haystack-fastapi\images\turtle.jpg
+2026-04-28 10:48:09 | DEBUG    | haystack_index_search |   Score: 0.2046 | Pfad: /content/drive/MyDrive/clip_images/apple.jpg
+2026-04-28 10:48:09 | DEBUG    | haystack_index_search | Gefundene Dokumente: 5
+2026-04-28 10:48:09 | INFO     | haystack_index_search | Suche erfolgreich – 5 Ergebnisse zurückgegeben
+2026-04-28 10:57:56 | INFO     | haystack_index_search | Indexierung gestartet – 2 Bilder
