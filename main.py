@@ -8,6 +8,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from cachetools import TTLCache
+from utils.make_cache import make_cache_key
 
 from pipelines import build_document_store, build_indexing_pipeline, build_search_pipeline
 
@@ -29,6 +31,9 @@ async def lifespan(app: FastAPI):
     app.state.search_pipeline = build_search_pipeline(doc_store)
     app.state.indexing_pipeline.warm_up()
     app.state.search_pipeline.warm_up()
+
+    # Cache: max. 256 entries, 10 min. ttl
+    app.state.search_cache = TTLCache(maxsize=256, ttl=600)
     print("Ready.")
     yield
 
@@ -135,12 +140,30 @@ async def index_images(
     logger.info(
         f"Indexierung abgeschlossen – {len(saved_paths)} Bilder erfolgreich indexiert"
     )
+
+    # Am Ende, nach erfolgreichem Indexieren:
+    request.app.state.search_cache.clear()
+    logger.info("Search-Cache invalidiert nach Neuindexierung")
+    
     return {"message": f"{len(saved_paths)} images indexed.", "files": saved_paths}
 
 
 @app.post("/search", response_model=List[SearchResult])
 async def search(request: Request, body: SearchRequest):
+
     logger.info(f"Suchanfrage: '{body.query}' | top_k={body.top_k}")
+
+    cache = request.app.state.search_cache
+    cache_key = make_cache_key(body.query, body.top_k)
+
+    # --- Cache-Lookup ---
+    cached = cache.get(cache_key)
+    if cached is not None:
+        logger.info(f"Cache HIT für '{body.query}'")
+        return [SearchResult(**item) for item in cached]
+    
+    logger.info(f"Cache MISS – Suchanfrage: '{body.query}' | top_k={body.top_k}")
+    
     result = await request.app.state.search_pipeline.run_async(
         {"text_embedder": {"text": body.query}}
     )
@@ -173,9 +196,17 @@ async def search(request: Request, body: SearchRequest):
     if not results:
         logger.warning(f"Keine Ergebnisse für Query: '{body.query}'")
         raise HTTPException(status_code=404, detail="Dateien nicht lokal vorhanden.")
+    
 
+    # --- Ergebnis in Cache schreiben ---
+    # Pydantic-Objekte müssen serialisiert werden, bevor sie gecacht werden
+    serialized = [r.model_dump() for r in results]
+    cache[cache_key] = serialized
+
+    logger.info(f"Cache WRITE – {len(results)} Ergebnisse gecacht")
     logger.info(f"Suche erfolgreich – {len(results)} Ergebnisse zurückgegeben")
     return results
+
 
 
 @app.get("/stats")
