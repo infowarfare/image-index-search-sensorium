@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependencies
+        run: pip install pytest pytest-asyncio httpx pillow
+
+      - name: Run tests
+        env:
+          QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
+        run: pytest --tb=short -v
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test  # ← erst testen, dann bauen
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t image-search-api .
+
+      - name: Start container
+        run: |
+          docker compose up -d
+          sleep 5  # warten bis Container bereit ist
+
+      - name: Health check
+        run: |
+          curl --fail http://localhost:8000/stats || exit 1
+
+      - name: Stop container
+        if: always()
+        run: docker compose down

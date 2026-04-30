@@ -8,3 +8,7 @@ tf-keras
 sentence-transformers
 python-dotenv
 cachetools
+pytest 
+pytest-asyncio 
+httpx 
+pillow
