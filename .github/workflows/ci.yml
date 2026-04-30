@@ -35,6 +35,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Create .env file
+        run: echo "QDRANT_API_KEY=${{ secrets.QDRANT_API_KEY }}" > .env
+
       - name: Build Docker image
         run: docker build -t image-search-api .
 
