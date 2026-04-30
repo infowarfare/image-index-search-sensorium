@@ -1,5 +1,7 @@
 import json
 import base64
+import time
+
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import List, Optional
@@ -151,6 +153,9 @@ async def index_images(
 @app.post("/search", response_model=List[SearchResult])
 async def search(request: Request, body: SearchRequest):
 
+    # measure retrieval time
+    t_start = time.perf_counter()
+
     logger.info(f"Suchanfrage: '{body.query}' | top_k={body.top_k}")
 
     cache = request.app.state.search_cache
@@ -159,10 +164,10 @@ async def search(request: Request, body: SearchRequest):
     # --- Cache-Lookup ---
     cached = cache.get(cache_key)
     if cached is not None:
-        logger.info(f"Cache HIT für '{body.query}'")
+        t_elapsed = time.perf_counter() - t_start
+        logger.info(f"Cache HIT | {t_elapsed * 1000:.1f}ms | Query: '{body.query}'")
         return [SearchResult(**item) for item in cached]
     
-    logger.info(f"Cache MISS – Suchanfrage: '{body.query}' | top_k={body.top_k}")
     
     result = await request.app.state.search_pipeline.run_async(
         {"text_embedder": {"text": body.query}}
@@ -205,6 +210,9 @@ async def search(request: Request, body: SearchRequest):
 
     logger.info(f"Cache WRITE – {len(results)} Ergebnisse gecacht")
     logger.info(f"Suche erfolgreich – {len(results)} Ergebnisse zurückgegeben")
+    
+    t_elapsed = time.perf_counter() - t_start
+    logger.info(f"Cache MISS | {t_elapsed * 1000:.1f}ms | Query: '{body.query}'")
     return results
 
 
