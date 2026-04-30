@@ -16,6 +16,9 @@ def setup_logger(name: str = "haystack_index_search", log_file: str = "logs/app.
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(formatter)
 
+    # create logs folder if it does not exist
+    Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+
     # File Handler
     file_handler = logging.FileHandler(log_file, encoding="utf-8")
     file_handler.setLevel(logging.DEBUG)
