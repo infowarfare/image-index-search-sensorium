@@ -43,7 +43,7 @@ docker compose down
 
 ## Frontend
 
-Open `static/search_index.html` in a browser to access the search and indexing UI.
+Open `http://127.0.0.1:8000/home` in a browser to access the search and indexing UI.
 
 ## Models
 
