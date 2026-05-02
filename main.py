@@ -1,6 +1,7 @@
 import json
 import base64
 import time
+import uuid
 
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -55,6 +56,7 @@ app.add_middleware(
 class SearchRequest(BaseModel):
     query: str
     top_k: int = 3
+    session_id: Optional[str] = None
 
 class SearchResult(BaseModel):
     filename: str
@@ -153,13 +155,16 @@ async def index_images(
 @app.post("/search", response_model=List[SearchResult])
 async def search(request: Request, body: SearchRequest):
 
+    # Create generic session id if missing
+    session_id = body.session_id or str(uuid.uuid4())
+
     # measure retrieval time
     t_start = time.perf_counter()
 
-    logger.info(f"Suchanfrage: '{body.query}' | top_k={body.top_k}")
+    logger.info(f"Suchanfrage - Session ID:{session_id} |'{body.query}' | top_k={body.top_k}")
 
     cache = request.app.state.search_cache
-    cache_key = make_cache_key(body.query, body.top_k)
+    cache_key = make_cache_key(session_id, body.query, body.top_k)
 
     # --- Cache-Lookup ---
     cached = cache.get(cache_key)
