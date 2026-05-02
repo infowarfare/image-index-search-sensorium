@@ -13,7 +13,7 @@ def setup_logger(name: str = "haystack_index_search", log_file: str = "logs/app.
 
     # Console Handler
     console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setLevel(logging.INFO)
+    console_handler.setLevel(logging.DEBUG)
     console_handler.setFormatter(formatter)
 
     # create logs folder if it does not exist

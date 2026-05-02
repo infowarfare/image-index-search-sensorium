@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from cachetools import TTLCache
 from utils.make_cache import make_cache_key
+from utils.reranker import fuzzy_rerank
 
 from pipelines import build_document_store, build_indexing_pipeline, build_search_pipeline
 
@@ -185,13 +186,38 @@ async def search(request: Request, body: SearchRequest):
     )
 
     docs = result["retriever"]["documents"][: body.top_k]
+    logger.debug(f"Gefundene Dokumente: {len(docs)}")
     for doc in docs:
         logger.debug(f"  Score: {doc.score:.4f} | Pfad: {doc.meta.get('file_path')}")
 
-    logger.debug(f"Gefundene Dokumente: {len(docs)}")
-
     if not docs:
         raise HTTPException(status_code=404, detail="No matching images found.")
+    
+    # --- Fuzzy Reranking falls Metadaten vorhanden ---
+    if any(doc.meta.get("description") or doc.meta.get("keywords") for doc in docs):
+        # Scores VOR Reranking
+        before = [(Path(str(doc.meta["file_path"])).name, doc.score) for doc in docs]
+        
+        docs = fuzzy_rerank(docs=docs, query=body.query)
+        
+        # Scores NACH Reranking
+        after = [(Path(str(doc.meta["file_path"])).name, doc.score) for doc in docs]
+        
+        logger.info(f"Fuzzy Reranking | Query: '{body.query}'")
+        logger.debug("Reihenfolge vor Reranking:")
+        for i, (name, score) in enumerate(before, 1):
+            logger.debug(f"  {i}. {name} | CLIP Score: {score:.4f}")
+        logger.debug("Reihenfolge nach Reranking:")
+        for i, (name, score) in enumerate(after, 1):
+            logger.debug(f"  {i}. {name} | Combined Score: {score:.4f}")
+
+        # Reihenfolge verändert?
+        before_order = [name for name, _ in before]
+        after_order = [name for name, _ in after]
+        if before_order != after_order:
+            logger.info(f"Reranking hat Reihenfolge verändert: {before_order} → {after_order}")
+        else:
+            logger.info("Reranking hat Reihenfolge nicht verändert")
 
     results = []
     for doc in docs:
