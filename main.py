@@ -37,6 +37,9 @@ async def lifespan(app: FastAPI):
 
     # Cache: max. 256 entries, 10 min. ttl
     app.state.search_cache = TTLCache(maxsize=256, ttl=600)
+    
+    # Generate global session id
+    app.state.session_id = str(uuid.uuid4())
     print("Ready.")
     yield
 
@@ -155,8 +158,11 @@ async def index_images(
 @app.post("/search", response_model=List[SearchResult])
 async def search(request: Request, body: SearchRequest):
 
-    # Create generic session id if missing
-    session_id = body.session_id or str(uuid.uuid4())
+    # Get session id
+    if body.session_id is None:
+        session_id = request.app.state.session_id
+    else:
+        session_id = body.session_id 
 
     # measure retrieval time
     t_start = time.perf_counter()
